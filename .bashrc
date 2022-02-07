@@ -107,20 +107,7 @@ largestfiles() {
     fi
 }
 
-# Show system information when the terminal starts up
-# clear
-# 
-# printf "\n"
-# printf "   %s\n" "IP ADDR: $(curl ifconfig.me)"
-# printf "   %s\n" "USER: $(echo $USER)"
-# printf "   %s\n" "DATE: $(date)"
-# printf "   %s\n" "UPTIME: $(uptime)"
-# printf "   %s\n" "HOSTNAME: $(hostname)"
-# printf "   %s\n" "CPU: $(awk -F: '/model name/{print $2}' | head -1)"
-# printf "   %s\n" "KERNEL: $(uname -rms)"
-# printf "   %s\n" "PACKAGES: $(dpkg --get-selections | wc -l)"
-# printf "   %s\n" "RESOLUTION: $(xrandr | awk '/\*/{printf $1" "}')"
-# printf "   %s\n" "MEMORY: $(free -m -h | awk '/Mem/{print $3"/"$2}')"
-# printf "\n"
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
 
 export PS1="\[$yellow\]\u@\h \[$cyan\]\w \[$red\]\$(parse_git_branch)\[$white\]$ "
