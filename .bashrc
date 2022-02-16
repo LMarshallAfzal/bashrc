@@ -12,7 +12,7 @@
 
 # Some applications read the EDITOR variable to determine your favourite text
 # editor. So uncomment the line below and enter the editor of your choice :-)
-#export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 #export EDITOR=/usr/bin/mcedit
 
 # For some news readers it makes sense to specify the NEWSSERVER variable here
@@ -33,9 +33,29 @@ red=$(tput setaf 1)
 white=$(tput setaf 231) 
 light_purple=$(tput setaf 13)
 
-MY_BASH_BLUE="\033[0;34m" #Blue
-MY_BASH_NOCOLOR="\033[0m"
 HISTTIMEFORMAT=`echo -e ${light_purple}%F %T $MY_BASH_NOCOLOR `
+
+alias cp='cp -rv'
+alias ls='ls --color=auto -ACF'
+alias mv='mv -v'
+alias mkdir='mkdir -pv'
+alias wget='wget -c'
+alias ..='cd ..;pwd'
+alias ...='cd ../..;pwd'
+alias ....='cd ../..'
+alias c='clear'
+alias h='history'
+alias tree='tree --dirsfirst -F'
+alias mkdir='mkdir -p -v'
+
+alias pym='python3 manage.py'
+alias mkvenv='python3 -m venv venv'
+alias startvenv='source venv/bin/activate && which python3'
+alias stopvenv='deactivate venv'
+
+alias gst='git st'
+alias gco='git commit'
+alias gch='git checkout'
 
 alias ros='singularity run --nv ros-container.sif'
 alias rosexam='singularity run --nv ros-container_1.sif'
@@ -93,6 +113,11 @@ largestfiles() {
     du -h -x -s -- * | sort -r -h | head -20;
 }
 
+# Search through your history for previous run commands
+hg() {
+    history | grep "$1";
+}
+
 # Create an initialise a skeleton git repository
  gitInit() {
     if [ -z "$1" ]; then
@@ -102,8 +127,8 @@ largestfiles() {
         builtin cd "$1";
         pwd;
         git init;
-        touch readme.md .gitignore;
-        echo "# $(basename $PWD)" >> readme.md
+        touch README.md .gitignore;
+        echo "# $(basename $PWD)" >> README.md
     fi
 }
 
