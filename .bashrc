@@ -25,6 +25,10 @@ export EDITOR=/usr/bin/vim
 #export PILOTPORT=/dev/pilot
 #export PILOTRATE=115200
 
+if [ -e $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
+fi
+
 test -s ~/.alias && . ~/.alias || true
 
 yellow=$(tput setaf 226) 
