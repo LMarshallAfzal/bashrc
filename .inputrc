@@ -1,37 +1,109 @@
 ################################################################################
+
 ## ~/.inputrc
+
 ##
+
 ## Control the behaviour of the readline library used e.g.
+
 ## by the bash in the interactive mode for line editing.
+
 ##
+
 ################################################################################
+
 #
+
 # The bell style used e.g. on error or tab completion, possible values
+
 # are `none', `visible', and `audible' the ringing the bell.
+
 #
+
 #set bell-style none
 
 #
+
 # If set to on, words which have more than one possible completion without
+
 # any possible partial completion cause the matches to be listed immediately
+
 # instead of ringing the bell.
+
 #
+
 #set show-all-if-unmodified on
 
 #
+
 # If set to on, words which have more than one possible completion cause the
+
 # matches to be listed immediately instead of ringing the bell.
+
 #
+
 #set show-all-if-ambiguous on
 
 #
+
 # end
+
 #
 
-"\e[A": history-search-backward            # arrow up
-"\e[B": history-search-forward             # arrow down
+"\e[A": history-search-backward # arrow up
+"\e[B": history-search-forward # arrow down
 "\e[C": forward-char
 "\e[D": backward-char
 
 set colored-stats On
 
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+$if mode=emacs
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+    "\e[C": forward-char
+    "\e[D": backward-char
+
+    # Colorize Completions
+
+        # Color files by types
+        set colored-stats On
+
+    # Append char to indicate type
+
+    set visible-stats On
+
+    # Mark directories
+
+    set mark-directories On
+
+    # Mark symlinked directories
+
+    set mark-symlinked-directories On
+
+    # Color the common prefix
+
+    set colored-completion-prefix On
+
+    # Color the common prefix in menu-complete
+
+    set menu-complete-display-prefix On
+$endif
+$if Bash
+    TAB:menu-complete
+    Space: magic-space
+    #history like zsh
+    set match-hidden-files off
+    set completion-ignore-case on
+    set completion-map-case on
+    set history-preserve-point on
+    #set mark-modified-lines on
+    set visible-stats on
+    set print-completions-horizontally on
+    set show-all-if-ambiguous on
+    set completion-query-items 0
+    set page-completions off  
+$endif
