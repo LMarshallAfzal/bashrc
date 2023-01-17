@@ -39,31 +39,6 @@ light_purple=$(tput setaf 13)
 
 HISTTIMEFORMAT=`echo -e ${light_purple}%F %T $MY_BASH_NOCOLOR `
 
-alias cp='cp -rv'
-alias ls='ls --color=auto -ACF'
-alias mv='mv -v'
-alias mkdir='mkdir -pv'
-alias wget='wget -c'
-alias ..='cd ..;pwd'
-alias ...='cd ../..;pwd'
-alias ....='cd ../..'
-alias c='clear'
-alias h='history'
-alias tree='tree --dirsfirst -F'
-alias mkdir='mkdir -p -v'
-
-alias pym='python3 manage.py'
-alias mkvenv='python3 -m venv venv'
-alias startvenv='source venv/bin/activate && which python3'
-alias stopvenv='deactivate venv'
-
-alias gst='git st'
-alias gco='git commit'
-alias gch='git checkout'
-
-alias ros='singularity run --nv ros-container.sif'
-alias rosexam='singularity run --nv ros-container_1.sif'
-
 if [[ "$(cat /etc/os-release)" == *"Ubuntu 18.04"* ]] ; then
     source /opt/ros/melodic/setup.bash
     source ~/catkin_ws/devel/setup.bash
@@ -76,7 +51,7 @@ fi
 
 # Show branch when in a git repository
 parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 # Automatically execute ls when changing directory
