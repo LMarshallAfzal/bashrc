@@ -57,6 +57,12 @@ parse_git_branch() {
 # Automatically execute ls when changing directory
 cd() {
     builtin cd "$@" && ls
+
+    if [ $# -eq 1 ] && [ $1 == "projects" ]; then
+        builtin cd Projects
+    else
+        builtin cd "$@"
+    fi
 }
 
 # Extract any type of compressed file
