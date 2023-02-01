@@ -76,10 +76,15 @@ if [ "$OS" == "ubuntu" ]; then
   fi
 
   echo "Installing MS Teams on Ubuntu"
-  if ! sudo apt-get install teams: then
+  if ! sudo apt-get install teams; then
     echo "Error: failed to install teams"
     exit 1
   fi
+
+  echo "Installing Discord on Ubuntu..."
+  if ! sudo apt-get install -y discord; then 
+    echo "Error installing Discord"
+    exit 1
 fi
 
 fi
@@ -123,6 +128,10 @@ if [ "$OS" == "opensuse" ]; then
   echo "Installing Teams on OpenSUSE..."
   sudo zypper install refresh || { echo "Error refreshing repository."; exit 1; }
   sudo zypper install teams || { echo "Error installing Teams."; exit 1; }
+
+  echo "Installing Discord on OpenSUSE..."
+  sudo zypper refresh || { echo "Error refreshing repository."; exit 1; }
+  sudo zypper install discord || { echo "Error installing Discord."; exit 1; }
 fi
 
 
@@ -176,6 +185,11 @@ if [ "$OS" == "manjaro" ]; then
     echo "Failed to install Teams. Please try again later."
     exit 1
   fi
+
+  echo "Installing Discord on Manjaro..."
+  if ! sudo pacman -Sy discord; then 
+    echo "Error installing Discord."
+    exit 1
 fi
 
 
