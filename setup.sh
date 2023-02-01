@@ -108,6 +108,11 @@ if [ "$OS" == "opensuse" ]; then
   echo "Installing Python on OpenSUSE..."
   sudo zypper refresh || { echo "Error refreshing repository."; exit 1; }
   sudo zypper install python3 || { echo "Error installing Python."; exit 1; }
+
+  echo "Installing Asus-Linux on OpenSUSE..."
+  sudo zypper ar --priority 50 --refresh https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux || { echo "Error adding repository for Asus-Linux."; exit 1; }
+  sudo zypper refresh || { echo "Error refreshing repository."; exit 1; }
+  sudo zypper install asusctl || { echo "Error installing Asus-Linux"; exit 1; }
 fi
 
 
@@ -158,4 +163,4 @@ if [ "$OS" == "manjaro" ]; then
 fi
 
 
-echo "All application have been installed!"
+echo "All application have been installed! You must reboot your system for the changes to take effect."
