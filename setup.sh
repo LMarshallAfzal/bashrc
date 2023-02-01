@@ -74,6 +74,12 @@ if [ "$OS" == "ubuntu" ]; then
     echo "Error: failed to install Python"
     exit 1
   fi
+
+  echo "Installing MS Teams on Ubuntu"
+  if ! sudo apt-get install teams: then
+    echo "Error: failed to install teams"
+    exit 1
+  fi
 fi
 
 fi
@@ -113,6 +119,10 @@ if [ "$OS" == "opensuse" ]; then
   sudo zypper ar --priority 50 --refresh https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux || { echo "Error adding repository for Asus-Linux."; exit 1; }
   sudo zypper refresh || { echo "Error refreshing repository."; exit 1; }
   sudo zypper install asusctl || { echo "Error installing Asus-Linux"; exit 1; }
+
+  echo "Installing Teams on OpenSUSE..."
+  sudo zypper install refresh || { echo "Error refreshing repository."; exit 1; }
+  sudo zypper install teams || { echo "Error installing Teams."; exit 1; }
 fi
 
 
@@ -158,6 +168,12 @@ if [ "$OS" == "manjaro" ]; then
   echo "Installing Java on Manjaro..."
   if ! sudo pacman -S jdk-openjdk; then
     echo "Failed to install Java. Please try again later."
+    exit 1
+  fi
+
+  echo "Installing on Teams on Manjaro..."
+  if ! sudo pacman -Sy teams; then
+    echo "Failed to install Teams. Please try again later."
     exit 1
   fi
 fi
