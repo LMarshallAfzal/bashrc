@@ -20,6 +20,10 @@ zypper install -y pulseaudio
 echo "Installing timeshift..."
 zypper install -y timeshift
 
+# Install git
+echo "Installing git..."
+zypper install -y git
+
 # Install Google Chrome
 echo "Installing Google Chrome..."
 zypper addrepo http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
@@ -64,6 +68,25 @@ wget https://download.jetbrains.com/python/pycharm-professional-2021.2.3.tar.gz 
 tar -xzvf /tmp/pycharm.tar.gz -C /opt
 rm /tmp/pycharm.tar.gz
 ln -s /opt/pycharm-*/bin/pycharm.sh /usr/local/bin/pycharm
+
+# Install Postman
+echo "Installing Postman..."
+wget https://dl.pstmn.io/download/latest/linux64 -O /tmp/postman.tar.gz
+tar -xzf /tmp/postman.tar.gz -C /opt
+ln -s /opt/Postman/Postman /usr/local/bin/postman
+echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Exec=postman
+Comment=API Development Environment
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=Postman" > /usr/share/applications/postman.desktop
+rm /tmp/postman.tar.gz
+
+
 
 # Install Wireshark
 echo "Installing Wireshark..."
