@@ -18,17 +18,21 @@ zypper install -y pulseaudio
 
 # Install timeshift
 echo "Installing timeshift..."
-zypper addrepo --refresh https://download.opensuse.org/repositories/home:/stevenpusser/openSUSE_Tumbleweed/home:stevenpusser.repo
 zypper install -y timeshift
 
 # Install Google Chrome
 echo "Installing Google Chrome..."
-zypper addrepo --refresh http://dl.google.com/linux/chrome/rpm/stable/x86_64 google-chrome
+zypper addrepo http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
+wget https://dl.google.com/linux/linux_signing_key.pub
+rpm --import linux_signing_key.pub
+zypper refresh
 zypper install -y google-chrome-stable
 
 # Install VSCode
 echo "Installing Visual Studio Code..."
-zypper addrepo --refresh https://packages.microsoft.com/yumrepos/vscode vscode
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+zypper addrepo https://packages.microsoft.com/yumrepos/vscode vscode
+zypper refresh
 zypper install -y code
 
 # Install npm, node
@@ -45,7 +49,6 @@ zypper install -y java
 
 # Install Discord
 echo "Installing Discord..."
-zypper addrepo --refresh https://dl.discordapp.net/rpm/stable/ discord
 zypper install -y discord
 
 # Install IntelliJ
