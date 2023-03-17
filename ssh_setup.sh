@@ -18,11 +18,6 @@ if ! ssh-add ~/.ssh/id_rsa; then
 fi
 
 echo "Copying the SSH key to your clipboard..."
-if ! sudo apt-get install xclip -y; then
-  echo "Error: failed to install xclip"
-  exit 1
-fi
-
 if ! xclip -sel clip < ~/.ssh/id_rsa.pub; then
   echo "Error: failed to copy the SSH key to your clipboard"
   exit 1
