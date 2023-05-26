@@ -26,7 +26,8 @@ else
   sudo dpkg -i google-chrome-stable_current_amd64.deb
 
   sudo apt install git python3-pip nodejs openjdk-11-jdk wireshark snapd
-  sudo snap install discord code
+  sudo snap install discord 
+  sudo snap install code --classic
 fi
 
 echo "All software installed. Please reboot your system."
