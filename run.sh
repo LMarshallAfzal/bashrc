@@ -32,22 +32,5 @@ if [ ! -f "$setup_script_path" ]; then
   exit 1
 fi
 
-# Run the setup.sh script
-echo "Running $setup_script_path..."
-. "$setup_script_path"
-
-#!/bin/bash
-
-# Check if the ssh_setup.sh file exists
-if [ ! -f ./ssh_setup.sh ]; then
-  echo "Error: ssh_setup.sh file not found"
-  exit 1
-fi
-
-# Run the ssh_setup.sh file
-./ssh_setup.sh || { echo "Error running ssh_setup.sh."; exit 1; }
-
-echo "ssh_setup.sh ran successfully"
-
 
 echo "Done."

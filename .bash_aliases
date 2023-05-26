@@ -1,18 +1,17 @@
-alias cp='rsync -ah --info=progress2'
-alias ls='ls --color=auto -ACF'
-alias lt='ls --human-readable --size -1 -S --classify'
-alias mv='mv -v'
-alias mkdir='mkdir -pv'
-alias wget='wget -c'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../..'
-alias clr='clear'
-alias hist='history'
-alias tree='tree --dirsfirst -F'
-alias mkdir='mkdir -p -v'
-alias mnt='mount | grep -E ^/dev | column -t'
+alias cp='cp -i' # Prompts before overwriting files
+alias ls='ls --color=auto -alF' # List all files, including hidden files, with a nice format
+alias mv='mv -i' # Prompts before overwriting files
+alias mkdir='mkdir -p' # Create directories, including parent directories if necessary
+alias wget='wget -c' # Continue downloading interrupted downloads
+alias cd='cd -P' # Change directories, following symbolic links only once
+alias clr='clear && printf "\033[3J\033[H"' # Clear the screen and move the cursor to the top
+alias hist='history -w' # Write the history to a file
+alias tree='tree -C' # Show the directory tree with colors
 
+alias ..='cd ..' # Change to parent directory
+alias ...='cd ../..' # Change to grandparent directory
+alias ....='cd ../../..' # Change to great-grandparent directory
+ 
 alias pym='python3 manage.py'
 alias mkvenv='python3 -m venv venv'
 alias startvenv='source venv/bin/activate && which python3'

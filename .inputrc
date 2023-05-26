@@ -9,7 +9,7 @@
 # The bell style used e.g. on error or tab completion, possible values
 # are `none', `visible', and `audible' the ringing the bell.
 #
-#set bell-style none
+#set bell-style audible
 #
 # If set to on, words which have more than one possible completion without
 # any possible partial completion cause the matches to be listed immediately
@@ -36,7 +36,7 @@ set meta-flag on
 set input-meta on
 set convert-meta off
 set output-meta on
-$if mode=emacs
+$if mode=vim
     "\e[A": history-search-backward
     "\e[B": history-search-forward
     "\e[C": forward-char
@@ -66,7 +66,21 @@ $if mode=emacs
     # Color the common prefix in menu-complete
 
     set menu-complete-display-prefix On
+
+    # Bind Ctrl+S and Ctrl+Q to stty start and stop
+    "\e[S": stty start
+    "\e[Q": stty stop
+
+    # Bind Ctrl+W to backward-kill-word
+    "\e[W": backward-kill-word
+
+    # Bind Ctrl+U to unix-line-discard
+    "\e[U": unix-line-discard
+
+    # Enable bracketed paste
+    set enable-bracketed-paste
 $endif
+
 $if Bash
     TAB:menu-complete
     Space: magic-space
